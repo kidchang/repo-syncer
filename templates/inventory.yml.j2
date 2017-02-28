@@ -1,0 +1,2 @@
+[sources]{% for source in sources %}
+{{ source }} ansible_ssh_host={{ source }} ansible_ssh_user=build ansible_ssh_password=meru2002{% endfor %}

@@ -1,0 +1,4 @@
+---{% for key, value in source_worker_mapping.iteritems() %}
+{{ key }}:{% for worker in value %}
+    - {{ worker }}{% endfor %}
+{% endfor %}
