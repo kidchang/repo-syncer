@@ -1,0 +1,3 @@
+---
+- name: update git local from git upstream
+  git: repo={{ git_repo }} dest={{ git_local }} update=yes

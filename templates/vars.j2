@@ -1,4 +1,10 @@
----{% for key, value in source_worker_mapping.iteritems() %}
-{{ key }}:{% for worker in value %}
+
+---
+source_worker_mapping:{% for key, value in source_worker_mapping.iteritems() %}
+  {{ key }}:{% for worker in value %}
     - {{ worker }}{% endfor %}
 {% endfor %}
+
+branch_path: {{ branch_path }}
+git_repo: git@192.168.35.11:FWLC/FortiWLC.git
+git_local: /git_repo/FortiWLC

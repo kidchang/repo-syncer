@@ -1,0 +1,22 @@
+---
+- hosts: all
+  remote_user: build
+  pre_tasks:
+    - name: make sure ssh dir exist
+      file:
+        path: '{{ item.path }}'
+        owner: '{{ item.owner }}'
+        group: '{{ item.group }}'
+        state: directory
+        mode: 0755
+      with_items:
+        - path: /build/.ssh
+          owner: build
+          group: build
+
+- hosts: all
+  remote_user: build
+  max_fail_percentage: 0
+  roles:
+    - git_sync
+    - sync_workers

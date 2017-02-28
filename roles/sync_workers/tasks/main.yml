@@ -1,0 +1,5 @@
+---
+- name: rsync to all destinations
+  synchronize: src={{ git_local }} dest=rsync://{{ item }}/{{ branch_path }}
+  delegate_to: "{{ inventory_hostname }}"
+  with_items: "{{ source_worker_mapping[hostvars[host]['ansible_eth0']['ipv4']['address']]}}"
