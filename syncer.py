@@ -63,6 +63,8 @@ class Syncer(object):
         vars_file = os.path.join(self.ansible_dir, 'group_vars/all')
         self._generate_inventories(source_worker_mapping, inventory_file)
         self._generate_vars(source_worker_mapping, vars_file)
+        os.system("cp -rf roles %s" % self.ansible_dir)
+        os.system("cp sync.yml %s" % self.ansible_dir)
         cmd = "ANSIBLE_CONFIG=%s ansible-playbook -i %s sync.yml" % (os.path.join(self.ansible_dir),
                                                                      inventory_file)
 
